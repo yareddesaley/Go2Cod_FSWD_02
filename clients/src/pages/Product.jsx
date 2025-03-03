@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { clientsContext } from "../clientContext/clientsContext";
+import { clientsContext } from "../clientContext/ClientsContext";
 
 const Product = () => {
   const { allProducts, addToCartFun } = useContext(clientsContext);

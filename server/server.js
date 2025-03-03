@@ -5,8 +5,8 @@ const router = require("./Routes/routes");
 require("dotenv").config();
 const path = require("path");
 const multer = require("multer");
-const port = process.env.port || 4444;
-const mongodb_uri = process.env.MONGODB_URI;
+const port = process.env.PORT || 4444;
+// const mongodb_uri = process.env.MONGODB_URI;
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -15,11 +15,13 @@ app.listen(port, (req, res) => {
   console.log(`connected to port ${port} successully`);
 });
 mongoose
-  .connect(mongodb_uri)
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("connected to database successfully"))
   .catch((error) =>
     console.log(`error occured while connecting to db ${error}`)
   );
+
+
 //uploadding an image using multer
 const storage = multer.diskStorage({
   destination: "./upload/images",

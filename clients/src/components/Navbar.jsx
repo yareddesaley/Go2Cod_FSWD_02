@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-import { clientsContext } from "../clientContext/clientsContext";
+// import { clientsContext } from "../clientContext/clientsContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AnimatePresence, motion } from "framer-motion";
+import { clientsContext } from "../clientContext/ClientsContext";
 const Navbar = () => {
   const [isShow, setIsShow] = useState(false);
   const { cartDatas } = useContext(clientsContext);

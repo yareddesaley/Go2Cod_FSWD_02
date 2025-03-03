@@ -3,11 +3,12 @@ import { admin_context } from "../adminContext/AuthContext";
 
 const Listitem = () => {
   const { allproducts, deleteProductFun } = useContext(admin_context);
+  console.log({allproducts})
 
   return (
-    <div className="my-[5%] overflow-x-clip bg-gray-100  flex  justify-center ">
+    <div className="my-[5%] overflow-x-clip bg-gray-100 min-h-screen flex  justify-center ">
       <div className="w-[50%] mt-[4%] ">
-        <div className="flex justify-between items-center  bg-gray-200 text-lg font-bold p-3 rounded-lg">
+        <div className="flex justify-between items-center  bg-gray-200 text-lg font-bold py-3 px-6 rounded-lg">
           <div>Product</div>
           <dir>Price</dir>
           <div>Category</div>

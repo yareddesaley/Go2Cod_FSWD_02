@@ -3,17 +3,17 @@ export const clientsContext = createContext();
 const ClientsContext = ({ children }) => {
   const [allProducts, setAllProducts] = useState(null);
   const [cartDatas, setCartDatas] = useState([]);
-  const allProductsFun = async () => {
-    const response = await fetch("http://localhost:4444/allproducts");
-    const data = await response.json();
-    setAllProducts(data);
-  };
-  useEffect(() => {
-    const fetchData = async () => {
-      await allProductsFun();
+ 
+ 
+    const allProductsFun = async () => {
+      const response = await fetch("http://localhost:4444/allproducts");
+      const data = await response.json();
+      setAllProducts(data);
     };
-    fetchData();
-  }, []);
+    useEffect(() => {
+      allProductsFun();
+    }, []);
+
   //add to cart function
   const addToCartFun = (item) => {
     setCartDatas((prevCart) => {
