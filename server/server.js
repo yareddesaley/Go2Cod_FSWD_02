@@ -8,7 +8,7 @@ const multer = require("multer");
 const port = process.env.PORT || 4444;
 // const mongodb_uri = process.env.MONGODB_URI;
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://online-store-zarm.onrender.com' }));
 app.use(express.json());
 app.use(router);
 app.listen(port, (req, res) => {
