@@ -7,7 +7,7 @@ const ClientsContext = ({ children }) => {
  
  
     const allProductsFun = async () => {
-      const response = await fetch(`/allproducts`);
+      const response = await fetch(`${backendUrl}/allproducts`);
       const data = await response.json();
       setAllProducts(data);
     };
