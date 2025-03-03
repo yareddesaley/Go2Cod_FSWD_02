@@ -1,0 +1,8 @@
+# backend/render.yaml
+services:
+  - type: web
+    name: fullstack-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    env: node

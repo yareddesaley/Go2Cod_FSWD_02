@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { backendUrl } from "../../config/config";
+// import { backendUrl } from "../../config/config";
 export const clientsContext = createContext();
 const ClientsContext = ({ children }) => {
   const [allProducts, setAllProducts] = useState(null);
@@ -7,7 +7,7 @@ const ClientsContext = ({ children }) => {
  
  
     const allProductsFun = async () => {
-      const response = await fetch(`${backendUrl}/allproducts`);
+      const response = await fetch(`/allproducts`);
       const data = await response.json();
       setAllProducts(data);
     };
