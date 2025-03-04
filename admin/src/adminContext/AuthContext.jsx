@@ -11,11 +11,12 @@ const AuthContext = ({ children }) => {
   const [allproducts, setAllproducts] = useState(null);
   const [addProductError, setAddProductError] = useState(null);
   const [addProduct, setAddProduct] = useState(null);
+  const base_url="https://store-backend-1oan.onrender.com"
   //a function to add a product
   const addProductFun = async (req, res) => {
     const formData = new FormData();
     formData.append("product", image_uri);
-    const imageRespo = await fetch("http://localhost:4444/upload", {
+    const imageRespo = await fetch(`${base_url}/upload`, {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -28,7 +29,7 @@ const AuthContext = ({ children }) => {
       imageUri: imagedata.image_url,
     };
 
-    const response = await fetch("http://localhost:4444/addproduct", {
+    const response = await fetch(`${base_url}/addproduct`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const AuthContext = ({ children }) => {
   };
   //all products
   const allProductsFun = async () => {
-    const response = await fetch("http://localhost:4444/allproducts");
+    const response = await fetch(`${base_url}allproducts`;
     const data = await response.json();
     setAllproducts(data);
   };
@@ -59,7 +60,7 @@ const AuthContext = ({ children }) => {
   }, []);
   //delete a product
   const deleteProductFun = async (id) => {
-    const response = await fetch("http://localhost:4444/deleteProduct", {
+    const response = await fetch(`${base_url}/deleteProduct`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
