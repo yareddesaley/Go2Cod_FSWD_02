@@ -11,7 +11,8 @@ const AuthContext = ({ children }) => {
   const [allproducts, setAllproducts] = useState(null);
   const [addProductError, setAddProductError] = useState(null);
   const [addProduct, setAddProduct] = useState(null);
-  const base_url="https://store-backend-1oan.onrender.com"
+ const base_url="https://store-backend-1oan.onrender.com"
+  
   //a function to add a product
   const addProductFun = async (req, res) => {
     const formData = new FormData();
