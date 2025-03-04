@@ -24,7 +24,7 @@ mongoose
 
 //uploadding an image using multer
 const storage = multer.diskStorage({
-  destination: "./upload/images",
+  destination: "https://store-backend-1oan.onrender.com/upload/images",
   filename: (req, file, cb) => {
     cb(
       null,
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-app.use("/images", express.static("./upload/images"));
+app.use("/images", express.static("https://store-backend-1oan.onrender.com/upload/images"));
 const uploadImage = (req, res) => {
   console.log(req.file);
   res.json({
