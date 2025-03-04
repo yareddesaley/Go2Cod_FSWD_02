@@ -6,7 +6,7 @@ const ClientsContext = ({ children }) => {
  
  
     const allProductsFun = async () => {
-      const response = await fetch(`http://localhost:4444/allproducts`);
+      const response = await fetch(`https://store-backend-1oan.onrender.com/allproducts`);
       const data = await response.json();
       setAllProducts(data);
     };
