@@ -51,7 +51,7 @@ const AuthContext = ({ children }) => {
   };
   //all products
   const allProductsFun = async () => {
-    const response = await fetch(`${base_url}allproducts`;
+    const response = await fetch(`${base_url}/allproducts`);
     const data = await response.json();
     setAllproducts(data);
   };
