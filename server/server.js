@@ -37,7 +37,7 @@ app.use("/images", express.static("./upload/images"));
 const uploadImage = (req, res) => {
   console.log(req.file);
   res.json({
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    image_url: `https://store-backend-1oan.onrender.com/images/${req.file.filename}`,
   });
 };
 app.post("/upload", upload.single("product"), uploadImage);
