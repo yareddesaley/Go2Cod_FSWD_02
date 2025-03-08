@@ -6,7 +6,7 @@ require("dotenv").config();
 const path = require("path");
 const multer = require("multer");
 const port = process.env.PORT || 4444;
-// const mongodb_uri = process.env.MONGODB_URI;
+const mongodb_uri = process.env.MONGODB_URI;
 const app = express();
 app.use(cors({ origin: '*' }));
 app.use(express.json());
@@ -15,7 +15,7 @@ app.listen(port, (req, res) => {
   console.log(`connected to port ${port} successully`);
 });
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(mongodb_uri)
   .then(() => console.log("connected to database successfully"))
   .catch((error) =>
     console.log(`error occured while connecting to db ${error}`)
