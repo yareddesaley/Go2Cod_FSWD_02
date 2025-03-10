@@ -11,8 +11,8 @@ const Additem = () => {
     addProductFun,
   } = useContext(admin_context);
   return (
-    <div className="flex  justify-center  m-[10%]">
-      <div className="flex flex-col gap-4 w-[50%] p-8 rounded-lg bg-gray-200">
+    <div>
+      <div className="flex flex-col gap-4  p-8 rounded-lg bg-gray-200">
         <h1 className="flex mx-auto font-semibold text-lg text-gray-700">
           Add Product To Store
         </h1>
@@ -50,7 +50,7 @@ const Additem = () => {
             id="price"
             className="p-2 outline-none"
             onChange={(e) =>
-              setProducts({ ...products, price: e.target.value })
+              setProducts({ ...products, price:Number(e.target.value) })
             }
           />
         </div>

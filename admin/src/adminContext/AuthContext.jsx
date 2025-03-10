@@ -4,40 +4,29 @@ const AuthContext = ({ children }) => {
   const [image_uri, setImage_uri] = useState(null);
   const [products, setProducts] = useState({
     category: "",
-    price: "",
+    price: null,
     imageUri: "",
     description: "",
   });
   const [allproducts, setAllproducts] = useState(null);
   const [addProductError, setAddProductError] = useState(null);
   const [addProduct, setAddProduct] = useState(null);
-//  const base_url="https://store-backend-1oan.onrender.com"
 const base_url=`http://localhost:4444`
   
   //a function to add a product
   const addProductFun = async (req, res) => {
     const formData = new FormData();
-    formData.append("product", image_uri);
-    const imageRespo = await fetch(`${base_url}/upload`, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-      },
-      body: formData,
-    });
-    const imagedata = await imageRespo.json();
-    const newProduct = {
-      ...products,
-      imageUri: imagedata.image_url,
-    };
+    formData.append("imageUri", image_uri);
+   formData.append("category",products.category);
+   formData.append("price",products.price);
+   formData.append("description",products.description)
+   
 
     const response = await fetch(`${base_url}/addproduct`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
+      body: formData,
     });
+    console.log("formdata",formData)
     if (!response.ok) {
       let message;
       if (response.message) {

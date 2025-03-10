@@ -8,10 +8,17 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Additem />} />
-        <Route path="/list of products" element={<Listitem />} />
-      </Routes>
+      {/* <Routes>
+        <Route path="/" element={<Listitem />} />
+        <Route path="/add" element={<Additem />} />
+      </Routes> */}
+      <div className="grid grid-cols-[40%_50%] gap-14 w-full m-10 mt-24">
+    
+<Additem />
+   
+<Listitem />
+   
+      </div>
     </div>
   );
 };

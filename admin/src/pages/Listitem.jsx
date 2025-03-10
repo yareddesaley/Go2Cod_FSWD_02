@@ -6,8 +6,8 @@ const Listitem = () => {
   console.log({allproducts})
 
   return (
-    <div className="my-[5%] overflow-x-clip bg-gray-100 min-h-screen flex  justify-center ">
-      <div className="w-[50%] mt-[4%] ">
+    <div className=" overflow-x-clip  min-h-screen    ">
+      <div className="">
         <div className="flex justify-between items-center  bg-gray-200 text-lg font-bold py-3 px-6 rounded-lg">
           <div>Product</div>
           <dir>Price</dir>
@@ -20,7 +20,7 @@ const Listitem = () => {
               <div key={item._id} className="">
                 <div className="flex justify-between items-center py-3 ">
                   <img
-                    src={item.imageUri}
+                    src={`http://localhost:4444/${item.imageUri}`}
                     alt="product image"
                     className="h-[10%] w-[10%] mb-[1%]"
                   />
