@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { admin_context } from "../adminContext/AuthContext";
+import { base_url } from "../../config";
 
 const Listitem = () => {
   const { allproducts, deleteProductFun } = useContext(admin_context);
-  console.log({allproducts})
 
   return (
     <div className=" overflow-x-clip  min-h-screen    ">
@@ -20,7 +20,7 @@ const Listitem = () => {
               <div key={item._id} className="">
                 <div className="flex justify-between items-center py-3 ">
                   <img
-                    src={`http://localhost:4444/${item.imageUri}`}
+                    src={`${base_url}/${item.imageUri}`}
                     alt="product image"
                     className="h-[10%] w-[10%] mb-[1%]"
                   />

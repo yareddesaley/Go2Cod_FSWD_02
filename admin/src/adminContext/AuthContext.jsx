@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { base_url } from "../../config";
 export const admin_context = createContext();
 const AuthContext = ({ children }) => {
   const [image_uri, setImage_uri] = useState(null);
@@ -11,7 +12,7 @@ const AuthContext = ({ children }) => {
   const [allproducts, setAllproducts] = useState(null);
   const [addProductError, setAddProductError] = useState(null);
   const [addProduct, setAddProduct] = useState(null);
-const base_url=`http://localhost:4444`
+
   
   //a function to add a product
   const addProductFun = async (req, res) => {
@@ -26,7 +27,6 @@ const base_url=`http://localhost:4444`
       method: "POST",
       body: formData,
     });
-    console.log("formdata",formData)
     if (!response.ok) {
       let message;
       if (response.message) {
