@@ -66,9 +66,7 @@ const AuthContext = ({ children }) => {
     alert("Deleted successfuly");
     await allProductsFun();
   };
-  console.log("add-products", addProduct);
-  console.log("product-error", addProductError);
-  console.log("allproducts", allproducts);
+
   return (
     <admin_context.Provider
       value={{
