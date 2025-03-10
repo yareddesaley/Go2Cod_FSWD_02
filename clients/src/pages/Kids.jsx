@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { clientsContext } from "../clientContext/ClientsContext";
+import { base_url } from "../../config";
 
 const Kids = (props) => {
   const { allProducts, addToCartFun } = useContext(clientsContext);
@@ -23,7 +24,7 @@ const Kids = (props) => {
                     <Link to={`/product/${item._id}`}>
                       <div className="w-full h-48 sm:h-56 md:h-60 lg:h-64">
                         <img
-                          src={item.imageUri}
+                          src={`${base_url}/${item.imageUri}`}
                           alt="product image"
                           className="w-full h-full object-cover"
                         />

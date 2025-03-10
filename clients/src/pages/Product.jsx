@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { clientsContext } from "../clientContext/ClientsContext";
+import { base_url } from "../../config";
 
 const Product = () => {
   const { allProducts, addToCartFun } = useContext(clientsContext);
@@ -12,7 +13,6 @@ const Product = () => {
       const data = item._id === userId;
       return data;
     });
-  console.log("productInfo", productInfo);
   return (
     <div className="overflow-x-clip">
       {productInfo &&
@@ -21,7 +21,7 @@ const Product = () => {
             <div className="flex ml-5 lg:ml-0 flex-col lg:flex-row lg:gap-56">
               <div>
                 <img
-                  src={item.imageUri}
+                  src={`${base_url}/${item.imageUri}`}
                   alt="product image"
                   className="h-96 min-w-fit"
                 />

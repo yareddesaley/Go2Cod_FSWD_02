@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { clientsContext } from "../clientContext/ClientsContext";
+import { base_url } from "../../config";
 
 const Home = () => {
   const { allProducts, addToCartFun } = useContext(clientsContext);
-
   return (
     <div className="p-4 sm:p-6 lg:p-8 ">
       {/* Grid layout for products */}
@@ -26,7 +26,7 @@ const Home = () => {
                   <Link to={`/product/${item._id}`}>
                     <div className="h-48 sm:h-56 md:h-60 lg:h-64 w-full flex justify-center ">
                       <img
-                        src={item.imageUri}
+                        src={`${base_url}/${item.imageUri}`}
                         alt="product image"
                         className="h-full w-full object-cover"
                       />

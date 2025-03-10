@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { clientsContext } from "../clientContext/ClientsContext";
+import { base_url } from "../../config";
 const Men = (props) => {
   const { allProducts, addToCartFun } = useContext(clientsContext);
   return (
@@ -19,7 +20,7 @@ const Men = (props) => {
                   >
                     <Link to={`/product/${item._id}`}>
                       <img
-                        src={item.imageUri}
+                        src={`${base_url}/${item.imageUri}`}
                         alt="product image"
                         className="h-full w-full object-cover"
                       />
