@@ -22,7 +22,7 @@ const Listitem = () => {
                   <img
                     src={`${base_url}/${item.imageUri}`}
                     alt="product image"
-                    className="h-24  mb-[1%]"
+                    className="h-24 w-14  mb-[1%]"
                   />
                   <span className="w-[2%]  font-bold">${item.price}</span>
                   <span className="w-[5%] font-bold">{item.category}</span>
