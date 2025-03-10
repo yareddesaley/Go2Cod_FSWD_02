@@ -8,7 +8,21 @@ const path = require("path");
 const port = process.env.PORT || 4444;
 const mongodb_uri = process.env.MONGODB_URI;
 const app = express();
-app.use(cors({ origin: '*' }));
+const allowedOrigins = [
+  "https://store-admin-zjfs.onrender.com",
+  "http://localhost:4444", // For local development
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json());
 app.use(router);
 app.listen(port, (req, res) => {
