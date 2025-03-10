@@ -37,7 +37,8 @@ const loginUser = async (req, res) => {
 //add product to db
 const addProduct = async (req, res) => {
   try {
-    const { price, description, category, imageUri } = req.body;
+    const { price, description, category } = req.body;
+    const imageUri = req.file.path;
     if (!price || !description || !category || !imageUri)
       return res.status(400).json("All fields are required");
     let user = new productModel({ price, description, category, imageUri });

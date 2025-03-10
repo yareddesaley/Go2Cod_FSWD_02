@@ -4,7 +4,7 @@ const cors = require("cors");
 const router = require("./Routes/routes");
 require("dotenv").config();
 const path = require("path");
-const multer = require("multer");
+// const multer = require("multer");
 const port = process.env.PORT || 4444;
 const mongodb_uri = process.env.MONGODB_URI;
 const app = express();
@@ -20,24 +20,25 @@ mongoose
   .catch((error) =>
     console.log(`error occured while connecting to db ${error}`)
   );
-
+  app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve static files from the 'uploads' directory
 
 //uploadding an image using multer
-const storage = multer.diskStorage({
-  destination: "./upload/images",
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
-const upload = multer({ storage: storage });
-app.use("/images", express.static("./upload/images"));
-const uploadImage = (req, res) => {
-  console.log(req.file);
-  res.json({
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
-  });
-};
-app.post("/upload", upload.single("product"), uploadImage);
+// const storage = multer.diskStorage({
+//   destination: "upload/",
+//   filename: (req, file, cb) => {
+//     cb(
+//       null,
+//       Date.now() + "-" + file.originalname
+//     );
+//   },
+// });
+// const upload = multer({ storage: storage });
+// // app.use("/images", express.static("./upload/images"));
+// const uploadImage = (req, res) => {
+//   console.log(req.file);
+//   res.json({
+//     image_url: `${req.file.filename}`,
+//   });
+// };
+// app.post("/upload", upload.single("product"), uploadImage);
