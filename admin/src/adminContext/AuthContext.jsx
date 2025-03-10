@@ -12,10 +12,12 @@ const AuthContext = ({ children }) => {
   const [allproducts, setAllproducts] = useState(null);
   const [addProductError, setAddProductError] = useState(null);
   const [addProduct, setAddProduct] = useState(null);
+  const [loading,setLoading]=useState(false)
 
   
   //a function to add a product
   const addProductFun = async (req, res) => {
+    setLoading(true)
     const formData = new FormData();
     formData.append("imageUri", image_uri);
    formData.append("category",products.category);
@@ -31,13 +33,16 @@ const AuthContext = ({ children }) => {
       let message;
       if (response.message) {
         message = response.message;
+        setLoading(false)
         return setAddProductError(message);
       }
       message = response;
+      setLoading(false)
       return setAddProductError(message);
     }
     const data = await response.json();
     setAddProduct(data);
+    setLoading(false)
     alert("Added The Product Succesfully");
   };
   //all products
@@ -74,6 +79,7 @@ const AuthContext = ({ children }) => {
         addProductFun,
         allproducts,
         deleteProductFun,
+        loading
       }}
     >
       {children}

@@ -18,11 +18,11 @@ const Listitem = () => {
           allproducts.map((item) => {
             return (
               <div key={item._id} className="">
-                <div className="flex justify-between items-center py-3 ">
+                <div className="flex justify-between items-center py-3 h-[5%] w-[5%] ">
                   <img
                     src={`${base_url}/${item.imageUri}`}
                     alt="product image"
-                    className="h-[10%] w-[10%] mb-[1%]"
+                    className="h-full w-full mb-[1%]"
                   />
                   <span className="w-[2%]  font-bold">${item.price}</span>
                   <span className="w-[5%] font-bold">{item.category}</span>

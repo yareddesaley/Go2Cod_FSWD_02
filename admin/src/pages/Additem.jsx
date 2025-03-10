@@ -9,6 +9,7 @@ const Additem = () => {
     products,
     setProducts,
     addProductFun,
+    loading
   } = useContext(admin_context);
   return (
     <div>
@@ -70,7 +71,7 @@ const Additem = () => {
           className="bg-gray-400 text-white px-4 py-3 text-lg font-bold hover:bg-gray-600 rounded-xl"
           onClick={() => addProductFun()}
         >
-          Add To Store
+          {loading ? "Adding To Store":"Add To Store"}
         </button>
       </div>
     </div>
