@@ -11,6 +11,8 @@ const app = express();
 const allowedOrigins = [
   "https://store-admin-zjfs.onrender.com",
   "http://localhost:4444", // For local development
+  "http://localhost:3000",
+  "https://store-frontend-y5gs.onrender.com"
 ];
 
 app.use(cors({
