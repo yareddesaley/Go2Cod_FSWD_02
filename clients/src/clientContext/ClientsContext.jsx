@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { base_url } from "../../config";
 export const clientsContext = createContext();
 const ClientsContext = ({ children }) => {
-  const [allProducts, setAllProducts] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
   const [cartDatas, setCartDatas] = useState([]);
  
  

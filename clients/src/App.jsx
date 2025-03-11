@@ -15,7 +15,7 @@ const App = () => {
       <div className="absolute z-50">
         <Navbar />
       </div>
-      <div>
+      <div className="ml-4">
         <LeftSideBar />
       </div>
       <div className="absolute lg:left-72 lg:right-5 top-24">

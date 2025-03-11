@@ -1,22 +1,60 @@
 import React, { useContext } from "react";
 import { clientsContext } from "../clientContext/ClientsContext";
+import { base_url } from "../../config";
+import {DataTable} from "primereact/datatable"
+import { Column } from "primereact/column";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { Link } from "react-router-dom";
+
 
 const Cart = () => {
   const { cartDatas, removeFromCartFun } = useContext(clientsContext);
+const imageBodyTemplate = (rowData) => {
+  return (
+    <img
+      src={`${base_url}/${rowData.imageUri}`}
+      alt="Product"
+      className="h-8 lg:h-12 w-auto"
+    />
+  );
+}
+const removeFromCartTemplate = (rowData) => {
+  return (
+    <span
+                className="bg-red-500 px-4 py-1 w-16 flex justify-center rounded-lg text-white cursor-pointer hover:bg-red-700 justify-self-end"
+                onClick={()=>removeFromCartFun(rowData)}
+              >
+                X
+              </span>
+  );
+}
+const productDetails = (rowData) => {
+  return (
+    <Link to={`/product/${rowData._id}`}>
+    <span className="bg-green-500 px-4 py-1 text-white rounded-xl">
+                Negotiate
+                </span>
+    </Link>
+  );
+}
 
   return (
-    <div className="bg-gray-200 text-lg w-full mb-14 font-semibold grid grid-cols-1 p-5 lg:p-10">
+    <div className=" text-lg w-full mb-8 font-semibold grid grid-cols-1 p-5 lg:p-10">
       {/* Header for larger screens (hidden on smaller screens) */}
-      <div className="hidden xl:grid grid-cols-5 mb-5 text-xl">
-        <div>Product</div>
-        <div>Price</div>
-        <div>Quantity</div>
-        <div>Total Price</div>
-        <div>Remove</div>
-      </div>
+      <div className="card">
+            <DataTable  value={cartDatas} stripedRows tableStyle={{ minWidth: '50rem' }}>
+            <Column body={imageBodyTemplate} header="Product" />
+                <Column field="productName" header="Type of Product"></Column>
+                <Column field="category" header="Category"></Column>
+                <Column field="quantity" header="Quantity" ></Column>
+                <Column field="price" header=" Price"></Column>
+                <Column  header=" Negotiate " body={productDetails}></Column>
+                <Column  header=" remove" body={removeFromCartTemplate}></Column>
 
-      {/* Header for smaller screens (hidden on larger screens) */}
-      <div className="xl:hidden grid grid-cols-5 mb-5 text-xl">
+
+            </DataTable>
+        </div>
+      {/* <div className="xl:hidden grid grid-cols-5 mb-5 text-xl">
         <div></div>
         <div>Price</div>
         <div>
@@ -27,35 +65,27 @@ const Cart = () => {
           Total <br /> Price
         </div>
         <div>Remove</div>
-      </div>
-
-      {/* Divider */}
-      <div className="border-2 border-gray-500 w-full mb-3"></div>
-
+      </div> */}
+      {/* <div className="border-2 border-gray-500 w-full mb-3"></div> */}
       {/* Cart Items */}
-      {cartDatas &&
+      {/* {cartDatas &&
         cartDatas.map((item) => (
           <div key={item._id}>
-            <div className="grid grid-cols-5 gap-4 mb-3 items-center">
-              {/* Product Image */}
+            <div className="grid grid-cols-5 gap-2 mb-3 items-center w-[90%]">
               <img
-                src={item.imageUri}
+                src={`${base_url}/${item.imageUri}`}
                 alt=""
                 className="h-8 lg:h-12 w-auto justify-self-start"
               />
 
-              {/* Price */}
               <span className="text-center">${item.price}</span>
 
-              {/* Quantity */}
               <span className="text-center">{item.quantity}</span>
 
-              {/* Total Price */}
               <span className="text-center">
                 ${item.quantity * item.price}
               </span>
 
-              {/* Remove Button */}
               <span
                 className="bg-red-500 px-4 py-1 w-16 flex justify-center rounded-lg text-white cursor-pointer hover:bg-red-700 justify-self-end"
                 onClick={() => removeFromCartFun(item)}
@@ -64,18 +94,17 @@ const Cart = () => {
               </span>
             </div>
 
-            {/* Divider between items */}
             <hr className="border-t-2 border-gray-300 w-full mb-3" />
           </div>
-        ))}
+        ))} */}
 
       {/* Proceed to Payment Button */}
-      <button
+      {/* <button
         className="bg-green-500 text-white px-5 py-2 text-lg hover:bg-green-700 mt-10 font-bold rounded-lg w-full sm:w-auto justify-self-center"
         onClick={() => addToCartFun(item)}
       >
         Proceed To Payment
-      </button>
+      </button> */}
     </div>
   );
 };

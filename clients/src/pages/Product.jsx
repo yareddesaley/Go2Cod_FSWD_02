@@ -38,30 +38,30 @@ const Product = () => {
                   </div>
                 </div>
                 <hr className="h-1 w-full bg-gray-300" />
-                <div className="my-4 flex justify-center gap-24">
+                <div className="my-4 flex gap-24">
                   <span className="font-bold text-2xl text-gray-600">
                     Price
                   </span>
-                  <span className="font-bold text-xl text-gray-800">
+                  <span className="font-bold text-xl text-orange-600">
                     ${item.price}
                   </span>
                 </div>
                 <hr className="h-1 w-full bg-gray-300" />
-                <div className="my-4 flex justify-center gap-24">
+                <div className="my-4 flex gap-24">
                   <span className="font-bold text-2xl text-gray-600 ">
                     Category
                   </span>
-                  <span className="font-bold text-xl text-gray-800">
+                  <span className="font-bold text-xl text-orange-600">
                     {item.category}
                   </span>
                 </div>
                 <hr className="h-1 w-full bg-gray-300" />
-                <button
+                {/* <button
                   className=" bg-green-500 text-white px-5 py-1 text-lg hover:bg-green-700 mt-10  font-bold rounded-lg"
                   onClick={() => addToCartFun(item)}
                 >
                   Add To Cart
-                </button>
+                </button> */}
               </div>
             </div>
           );
