@@ -8,8 +8,9 @@ const AuthContext = ({ children }) => {
     price: null,
     imageUri: "",
     description: "",
+    productName:""
   });
-  const [allproducts, setAllproducts] = useState(null);
+  const [allproducts, setAllproducts] = useState([]);
   const [addProductError, setAddProductError] = useState(null);
   const [addProduct, setAddProduct] = useState(null);
   const [loading,setLoading]=useState(false)
@@ -18,28 +19,33 @@ const AuthContext = ({ children }) => {
   //a function to add a product
   const addProductFun = async (req, res) => {
     setLoading(true)
+    setAddProductError('')
     const formData = new FormData();
     formData.append("imageUri", image_uri);
    formData.append("category",products.category);
    formData.append("price",products.price);
    formData.append("description",products.description)
+   formData.append("productName",products.productName)
    
-
+if(!image_uri || !products.category || !products.price || !products.description || !products.productName){
+  setLoading(false)
+  return setAddProductError("All fields are required")
+}
     const response = await fetch(`${base_url}/addproduct`, {
       method: "POST",
       body: formData,
     });
-    if (!response.ok) {
-      let message;
-      if (response.message) {
-        message = response.message;
-        setLoading(false)
-        return setAddProductError(message);
-      }
-      message = response;
-      setLoading(false)
-      return setAddProductError(message);
-    }
+    // if (!response.ok) {
+    //   let message;
+    //   if (response.message) {
+    //     message = response.message;
+    //     setLoading(false)
+    //     return setAddProductError(message);
+    //   }
+    //   message = response;
+    //   setLoading(false)
+    //   return setAddProductError(message);
+    // }
     const data = await response.json();
     setAddProduct(data);
     setLoading(false)
@@ -77,7 +83,8 @@ const AuthContext = ({ children }) => {
         addProductFun,
         allproducts,
         deleteProductFun,
-        loading
+        loading,
+        addProductError
       }}
     >
       {children}

@@ -9,7 +9,8 @@ const Additem = () => {
     products,
     setProducts,
     addProductFun,
-    loading
+    loading,
+    addProductError
   } = useContext(admin_context);
   return (
     <div>
@@ -17,6 +18,17 @@ const Additem = () => {
         <h1 className="flex mx-auto font-semibold text-lg text-gray-700">
           Add Product To Store
         </h1>
+        <div className="flex flex-col gap-2 outline-none">
+          <label htmlFor="productType">Name of  Product</label>
+          <textarea
+            name="productType"
+            id="productType"
+            className=" outline-none p-2"
+            onChange={(e) =>
+              setProducts({ ...products, productName: e.target.value })
+            }
+          ></textarea>
+        </div>
         <div className="flex flex-col gap-2 outline-none border-none">
           <label htmlFor="category">Category</label>
           <select
@@ -27,7 +39,7 @@ const Additem = () => {
               setProducts({ ...products, category: e.target.value })
             }
           >
-            <option value="select category"></option>
+            <option value="select category">select</option>
             <option value="men">Men</option>
             <option value="women">Women</option>
             <option value="kids">Kids</option>
@@ -67,11 +79,14 @@ const Additem = () => {
             }}
           />
         </div>
+        <div className="text-red-500 font-bold">
+          {addProductError}
+        </div>
         <button
           className="bg-gray-400 text-white px-4 py-3 text-lg font-bold hover:bg-gray-600 rounded-xl"
           onClick={() => addProductFun()}
         >
-          {loading ? "Adding To Store":"Add To Store"}
+          {loading ? "Adding To Store ...":"Add To Store"}
         </button>
       </div>
     </div>
